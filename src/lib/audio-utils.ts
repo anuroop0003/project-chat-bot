@@ -6,9 +6,9 @@ type RecordAudioType = {
 
 export const blobToFile = (blob: Blob) => {
   return new File([blob], 'recording.webm', {
-    type: blob.type || "audio/webm",
-    lastModified: new Date().getTime(),
-  });
+    type: blob.type || 'audio/webm',
+    lastModified: new Date().getTime()
+  })
 }
 
 export const recordAudio = (function (): RecordAudioType {
@@ -36,7 +36,7 @@ export const recordAudio = (function (): RecordAudioType {
         }
 
         mediaRecorder.start(1000)
-          ; (func as RecordAudioType).currentRecorder = mediaRecorder
+        ;(func as RecordAudioType).currentRecorder = mediaRecorder
       })
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
@@ -44,13 +44,13 @@ export const recordAudio = (function (): RecordAudioType {
     }
   }
 
-    ; (func as RecordAudioType).stop = () => {
-      const recorder = (func as RecordAudioType).currentRecorder
-      if (recorder && recorder.state !== 'inactive') {
-        recorder.stop()
-      }
-      delete (func as RecordAudioType).currentRecorder
+  ;(func as RecordAudioType).stop = () => {
+    const recorder = (func as RecordAudioType).currentRecorder
+    if (recorder && recorder.state !== 'inactive') {
+      recorder.stop()
     }
+    delete (func as RecordAudioType).currentRecorder
+  }
 
   return func as RecordAudioType
 })()

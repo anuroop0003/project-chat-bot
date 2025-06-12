@@ -24,7 +24,7 @@ export function Chat({ className, suggestions }: ChatProps) {
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setUserQuery(e.target.value)
 
   const handleTranscribeAudio = (blob: Blob) => {
-    console.log("blob", blob.type);
+    console.log('blob', blob.type)
     createNewAudio(blob)
   }
 
@@ -49,7 +49,6 @@ export function Chat({ className, suggestions }: ChatProps) {
 
       <ChatForm className='mt-auto relative' isPending={isGenerating || isTyping} handleSubmit={handleSubmit}>
         <MessageInput
-          className='fixed bottom-2 left-0'
           value={userQuery}
           onChange={handleOnChange}
           stop={handleStop}

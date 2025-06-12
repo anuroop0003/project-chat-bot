@@ -138,11 +138,11 @@ export const useChatStore = create<ChatStore>()((set, get) => ({
   createNewAudio: async (blob) => {
     const transcription = await groq.audio.transcriptions.create({
       file: blobToFile(blob),
-      model: "whisper-large-v3",
-      response_format: "json",
-      language: "en",
-      temperature: 0.0,
-    });   
+      model: 'whisper-large-v3',
+      response_format: 'json',
+      language: 'en',
+      temperature: 0.0
+    })
     get().createNewChat(transcription.text)
   }
 }))
